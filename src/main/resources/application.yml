@@ -1,0 +1,15 @@
+# SQL SERVER
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databasename=embarcadero42
+    username: sa
+    password: 123456
+  jpa:
+    database: sql-server
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  
+server:
+  port: 8081

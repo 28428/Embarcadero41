@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1></h1>
+		<h1></h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de Trabajadores</div>
+			<div class="card-body">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerDel}"></span>
+				</div>
+
+				<table id="table" class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">DNI</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido Paterno</th>
+							<th scope="col">Apellido Materno</th>
+							<th scope="col">Tipo</th>
+							<th scope="col">Telefono</th>
+							
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="trabajador: ${personales}">
+						<tr>
+							<th scope="row" th:text="${trabajador.codigo}">1</th>
+							<td th:text="${trabajador.dni}">Mark</td>
+							<td th:text="${trabajador.nombre}">Otto</td>
+							<td th:text="${trabajador.apePat}">@mdo</td>
+							<td th:text="${trabajador.apeMat}">@mdo</td>
+							<td th:text="${trabajador.tipo}">@mdo</td>
+							<td th:text="${trabajador.telefono}">@mdo</td>
+							
+							<td><a 
+								th:href="@{ '/personal/info/' + ${trabajador.codigo} }"
+								class="btn btn-info"> <i class="fas fa-info"></i>
+							</a> <a  th:href="@{ '/personal/edit/' + ${trabajador.codigo} }"
+								class="btn btn-warning"> <i class="fas fa-edit"></i>
+							</a> <a th:href="@{ '/personal/del/' + ${trabajador.codigo} }"
+								class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="card-footer text-muted">
+				<a th:href="@{/}" class="btn btn-primary"><i
+					class="fas fa-arrow-left"></i> Atras</a> <a
+					
+					th:href="@{/personal/nuevo}" class="btn btn-primary"><i
+					class="fas fa-file-alt"></i> Nuevo</a>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

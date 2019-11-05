@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Informacion del Cliente</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Informacion del Cliente</div>
+			<div class="card-body">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerDel}"></span>
+				</div>
+				<form>
+					<div class="form-group row">
+						<label for="id" class="col-sm-2 col-form-label">Codigo: </label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${cliente.id}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="nombre" class="col-sm-2 col-form-label">Nombre:
+						</label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${cliente.nombre}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="apePat" class="col-sm-2 col-form-label">Apellido
+							Paterno: </label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${cliente.apePat}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="apeMat" class="col-sm-2 col-form-label">Apellido
+							Materno: </label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${cliente.apeMat}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="DNI" class="col-sm-2 col-form-label">DNI: </label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${cliente.DNI}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="telefono" class="col-sm-2 col-form-label">Telefono:
+						</label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${cliente.telefono}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="tipo" class="col-sm-2 col-form-label">Tipo: </label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${cliente.tipo}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+					
+				
+
+				</form>
+			</div>
+			
+						<div class="card-header">Pedidos</div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Codigo del Cliente</th>
+							<th scope="col">Codigo del Personal</th>
+							<th scope="col">Estado de Pedido</th>
+							<th scope="col">Plato escogido</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="pedido: ${cliente.pedidos}">
+						<tr>
+							<th scope="row" th:text="${pedido.codigo_pedido}">1</th>
+							
+							<td th:text="${pedido.cliente.id}">Mark</td>
+							<td th:text="${pedido.personal.codigo}">Otto</td>
+							<td th:text="${pedido.estado}">@mdo</td>
+						
+
+						</tr>
+					</tbody>
+				</table>
+			
+			
+			<div class="card-footer text-muted">
+				<a href="javascript:history.back(-1);" class="btn btn-primary"
+					title="Ir la página anterior"><i class="fas fa-arrow-left"></i>
+					Volver</a> <a
+					th:href="@{'/cliente/' + ${cliente.id} + '/nuevopedido/'}"
+					class="btn btn-primary"><i class="fas fa-file-alt"></i> Nuevo
+					Pedido</a> <a
+					th:href="@{'/cliente/' + ${cliente.id} + '/nuevousuario/'}"
+					class="btn btn-primary"><i class="fas fa-user-plus"></i> Nuevo
+					Usuario</a>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

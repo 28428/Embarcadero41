@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1></h1>
+
+		<div class="card">
+			<div class="card-header">
+				<p class="text-center">I.E.P "Semillitas del Saber"</p>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">TRABAJADORES</h5>
+							<p class="card-text"></p>
+							<li sec:authorize="hasAnyRole('ROLE_TRABAJADOR', 'ROLE_ADMIN')" class="nav-item"><a class="btn btn-primary" th:href="@{/personal}">
+						<i class="fas fa-home"></i> Trabajadores</a></li>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">PEDIDO</h5>
+							<p class="card-text"></p>
+							<li sec:authorize="hasAnyRole('ROLE_TRABAJADOR', 'ROLE_ADMIN')" class="nav-item"><a class="btn btn-primary" th:href="@{/cliente}">
+						<i class="fas fa-home"></i> PEDIDOS</a></li>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">PLATOS</h5>
+							<p class="card-text">Platos</p>
+							<li sec:authorize="hasAnyRole('ROLE_TRABAJADOR', 'ROLE_ADMIN')" class="nav-item"><a class="btn btn-primary" th:href="@{/platos}">
+						<i class="fas fa-home"></i> Platos</a></li>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

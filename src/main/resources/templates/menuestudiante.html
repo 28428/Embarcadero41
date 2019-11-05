@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1></h1>
+
+		<div class="card">
+			<div class="card-header">
+				<p class="text-center">I.E.P "Semillitas del Saber"</p>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">PERFIL</h5>
+							<p class="card-text"></p>
+							<li sec:authorize="hasRole('ROLE_ALUMNO')" class="nav-item"><a class="btn btn-primary" th:href="@{/matricula/datos}">
+						<i class="fas fa-home"></i> Perfil</a></li>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">MATRICULA</h5>
+							<p class="card-text"></p>
+							<li  th:each="alumno: ${alumnos}" sec:authorize="hasRole('ROLE_ALUMNO')" class="nav-item"><a class="btn btn-primary" th:href="@{'/matricula/'+${alumno.codigo}+'/matricula'}">
+						<i class="fas fa-home"></i> Matricula en linea</a></li>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

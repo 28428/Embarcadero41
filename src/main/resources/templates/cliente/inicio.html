@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1></h1>
+		<h1></h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de Clientes</div>
+			<div class="card-body">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerDel}"></span>
+				</div>
+
+				<table id="table" class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido Paterno</th>
+							<th scope="col">Apellido Materno</th>
+							<th scope="col">DNI</th>
+							<th scope="col">Telefono</th>
+							<th scope="col">Tipo</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="clientes: ${clientes}">
+						<tr>
+							<th scope="row" th:text="${clientes.id}">1</th>
+							<th scope="row" th:text="${clientes.nombre}">1</th>
+							<th scope="row" th:text="${clientes.apePat}">1</th>
+							<th scope="row" th:text="${clientes.apeMat}">1</th>
+							<th scope="row" th:text="${clientes.DNI}">1</th>
+							<th scope="row" th:text="${clientes.telefono}">1</th>
+							<th scope="row" th:text="${clientes.tipo}">1</th>
+							<td><a th:href="@{ '/cliente/info/' + ${clientes.id} }"
+								class="btn btn-info"> <i class="fas fa-info"></i>
+							</a> <a th:href="@{ '/cliente/edit/' + ${clientes.id} }"
+								class="btn btn-warning"> <i class="fas fa-edit"></i>
+							</a> <a th:href="@{ '/cliente/del/' + ${clientes.id} }"
+								class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="card-footer text-muted">
+				<a th:href="@{/}" class="btn btn-primary"><i
+					class="fas fa-arrow-left"></i> Atras</a> <a th:href="@{/cliente/nuevo}"
+					class="btn btn-primary"><i class="fas fa-file-alt"></i> Nuevo</a>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
